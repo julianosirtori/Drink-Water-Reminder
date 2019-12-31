@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
 import Water from '~/assets/images/water.png';
@@ -18,14 +19,14 @@ import {
 
 import AmountWeekly from './AmountWeekly';
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <Background>
       <Header>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('About')}>
           <Icon name="info" size={32} color="#ffffff" />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Icon name="settings-applications" size={32} color="#ffffff" />
         </TouchableOpacity>
       </Header>
@@ -43,6 +44,12 @@ export default function Home() {
     </Background>
   );
 }
+
+Home.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 Home.navigationOptions = {
   header: null,
