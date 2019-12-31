@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
@@ -18,10 +18,14 @@ import {
 } from './styles';
 
 import AmountWeekly from './AmountWeekly';
+import ModalDrinkWater from './ModalDrinkWater';
 
 export default function Home({ navigation }) {
+  const [isOpenModel, setIsOpenModel] = useState(false);
+
   return (
     <Background>
+      <ModalDrinkWater isVisible={isOpenModel} />
       <Header>
         <TouchableOpacity onPress={() => navigation.navigate('About')}>
           <Icon name="info" size={32} color="#ffffff" />
@@ -37,7 +41,13 @@ export default function Home({ navigation }) {
         </Info>
         <Image source={Water} />
         <ButtonDrinkWater>
-          <TextButtonDrinkWater>Beber Agua</TextButtonDrinkWater>
+          <TextButtonDrinkWater
+            onPress={() => {
+              setIsOpenModel(!isOpenModel);
+            }}
+          >
+            Beber Agua
+          </TextButtonDrinkWater>
         </ButtonDrinkWater>
       </Container>
       <AmountWeekly />
