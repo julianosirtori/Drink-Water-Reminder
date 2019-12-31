@@ -16,18 +16,20 @@ import {
   TextButtonDrinkWater,
 } from './styles';
 
+import AmountWeekly from './AmountWeekly';
+
 export default function Home() {
   return (
     <Background>
+      <Header>
+        <TouchableOpacity>
+          <Icon name="info" size={32} color="#ffffff" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name="settings-applications" size={32} color="#ffffff" />
+        </TouchableOpacity>
+      </Header>
       <Container>
-        <Header>
-          <TouchableOpacity>
-            <Icon name="info" size={32} color="#ffffff" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Icon name="settings-applications" size={32} color="#ffffff" />
-          </TouchableOpacity>
-        </Header>
         <Info>
           <DateText>Hoje</DateText>
           <GoalText>1L de 2L</GoalText>
@@ -37,6 +39,7 @@ export default function Home() {
           <TextButtonDrinkWater>Beber Agua</TextButtonDrinkWater>
         </ButtonDrinkWater>
       </Container>
+      <AmountWeekly />
     </Background>
   );
 }

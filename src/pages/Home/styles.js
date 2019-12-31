@@ -11,6 +11,7 @@ export const Header = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 16px 16px 0 16px;
 `;
 export const Info = styled.View`
   width: 100%;
@@ -26,6 +27,7 @@ export const DateText = styled.Text`
 
 export const GoalText = styled.Text`
   font-size: 28px;
+  font-style: italic;
   color: #ffffff;
   font-weight: bold;
 `;
