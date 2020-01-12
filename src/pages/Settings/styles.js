@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { CheckBox } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.View`
@@ -29,8 +28,9 @@ export const ContainerCheckBox = styled.View`
   margin-bottom: 8px;
 `;
 
-export const LabelCheckBox = styled.Text``;
-export const InputCheckBox = styled(CheckBox)``;
+export const Label = styled.Text`
+  margin-top: 8px;
+`;
 
 export const SaveButton = styled(RectButton).attrs({
   elevation: 10,
