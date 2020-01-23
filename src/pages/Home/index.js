@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PropTypes from 'prop-types';
@@ -18,17 +18,13 @@ import {
 } from './styles';
 
 import AmountWeekly from './AmountWeekly';
-import ModalDrinkWater from './ModalDrinkWater';
 
 export default function Home({ navigation }) {
-  const [isOpenModel, setIsOpenModel] = useState(false);
-
   return (
     <Background>
-      <ModalDrinkWater isVisible={isOpenModel} />
       <Header>
-        <TouchableOpacity onPress={() => navigation.navigate('About')}>
-          <Icon name="info" size={32} color="#ffffff" />
+        <TouchableOpacity onPress={() => navigation.navigate('History')}>
+          <Icon name="list" size={32} color="#ffffff" />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <Icon name="settings-applications" size={32} color="#ffffff" />
@@ -40,14 +36,12 @@ export default function Home({ navigation }) {
           <GoalText>1L de 2L</GoalText>
         </Info>
         <Image source={Water} />
-        <ButtonDrinkWater>
-          <TextButtonDrinkWater
-            onPress={() => {
-              setIsOpenModel(!isOpenModel);
-            }}
-          >
-            Beber Agua
-          </TextButtonDrinkWater>
+        <ButtonDrinkWater
+          onPress={() => {
+            navigation.navigate('DrinkWater');
+          }}
+        >
+          <TextButtonDrinkWater>Beber Agua</TextButtonDrinkWater>
         </ButtonDrinkWater>
       </Container>
       <AmountWeekly />
