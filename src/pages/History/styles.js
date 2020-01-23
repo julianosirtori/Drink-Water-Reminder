@@ -14,11 +14,6 @@ export const Item = styled.View`
   border-bottom-color: #ffffff;
 `;
 
-export const Line = styled.View`
-  height: 1px;
-  background: #ffffff;
-`;
-
 export const Avatar = styled.Image`
   width: 40px;
   height: 40px;

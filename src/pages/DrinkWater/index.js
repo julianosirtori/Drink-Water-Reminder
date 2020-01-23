@@ -6,8 +6,9 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel,
 } from 'react-native-simple-radio-button';
-
 import PropTypes from 'prop-types';
+
+import realm from '~/database';
 
 import BottleCircle from '~/assets/images/bottle_circle.png';
 import Background from '~/components/Background';
@@ -42,7 +43,13 @@ export default function DrinkWater({ navigation }) {
   }
 
   function toDrink() {
-    console.tron.log(amountWater);
+    try {
+      realm.write(() => {
+        realm.create('Drink', { amount: amountWater, date: new Date() });
+      });
+    } catch (e) {
+      console.tron.log('Error on creation');
+    }
   }
 
   return (

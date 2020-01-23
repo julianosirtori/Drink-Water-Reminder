@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
+
+import realm from '~/database';
 
 import BottleCircle from '~/assets/images/bottle_circle.png';
 import Background from '~/components/Background';
 
-import { Container, Item, Avatar, Righ, Line, Amount, Date } from './styles';
+import { Container, Item, Avatar, Righ, Amount, Date } from './styles';
 
 export default function History() {
+  useEffect(() => {
+    const drinks = realm.objects('Drink');
+    console.tron.log(drinks);
+  }, []);
+
   const dranks = [
     { amount: 100, date: 'Dia 12 de Janeiro de 2020 - 12:00' },
     { amount: 250, date: 'Dia 12 de Janeiro de 2020 - 12:00' },
