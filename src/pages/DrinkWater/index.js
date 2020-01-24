@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Alert, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import RadioForm, {
   RadioButton,
@@ -51,8 +51,12 @@ export default function DrinkWater({ navigation }) {
           date: new Date(),
         });
       });
+      Alert.alert('Beba Água', `Você bebeu ${amountWater}ml`, [
+        { text: 'OK', onPress: () => navigation.goBack() },
+      ]);
     } catch (e) {
       console.tron.log('Error on creation');
+      Alert.alert('Erro', 'Ocorreu um erro na gravação');
     }
   }
 
