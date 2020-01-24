@@ -45,7 +45,11 @@ export default function DrinkWater({ navigation }) {
   function toDrink() {
     try {
       realm.write(() => {
-        realm.create('Drink', { amount: amountWater, date: new Date() });
+        realm.create('Drink', {
+          id: new Date().getTime(),
+          amount: amountWater,
+          date: new Date(),
+        });
       });
     } catch (e) {
       console.tron.log('Error on creation');
