@@ -30,7 +30,7 @@ export const Amount = styled.Text`
   color: #ffffff;
 `;
 
-export const Date = styled.Text`
+export const DateText = styled.Text`
   font-size: 12px;
   font-weight: bold;
   color: #ffffff;

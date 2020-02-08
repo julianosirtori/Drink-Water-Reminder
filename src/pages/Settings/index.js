@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-community/async-storage';
+import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
 
@@ -15,7 +16,7 @@ import {
   TextSaveButton,
 } from './styles';
 
-export default function Settings() {
+export default function Settings({ navigation }) {
   const [dailytargetLiters, setDailyTargetLiters] = useState(2);
   const [showNotification, setShowNotification] = useState(false);
   const [intervalNotification, setIntervalNotification] = useState(1);
@@ -43,7 +44,11 @@ export default function Settings() {
         intervalNotification,
       })
     );
-    Alert.alert('Atenção!', 'Nova Configuração Salva');
+    Alert.alert('Atenção!', 'Nova Configuração Salva', [
+      {},
+      {},
+      { text: 'OK', onPress: () => navigation.goBack() },
+    ]);
   }
 
   return (
@@ -84,6 +89,12 @@ export default function Settings() {
     </Background>
   );
 }
+
+Settings.propTypes = {
+  navigation: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 Settings.navigationOptions = {
   title: 'Configurações',

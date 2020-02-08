@@ -15,7 +15,7 @@ import {
   Avatar,
   Righ,
   Amount,
-  Date,
+  DateText,
   TouchableDelete,
 } from './styles';
 
@@ -62,7 +62,7 @@ export default function History() {
               <Avatar source={BottleCircle} />
               <Righ>
                 <Amount>{`${item.amount}ml`}</Amount>
-                <Date>{item.dateFormated}</Date>
+                <DateText>{item.dateFormated}</DateText>
               </Righ>
             </Item>
           )}
