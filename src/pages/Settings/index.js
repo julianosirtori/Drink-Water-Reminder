@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { CheckBox, Alert } from 'react-native';
+import { Alert } from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import Background from '~/components/Background';
@@ -15,24 +16,20 @@ import {
 } from './styles';
 
 export default function Settings() {
-  const [dailytargetLiters, setDailyTargetLiters] = useState('');
+  const [dailytargetLiters, setDailyTargetLiters] = useState(2);
   const [showNotification, setShowNotification] = useState(false);
-  const [intervalNotification, setIntervalNotification] = useState('');
+  const [intervalNotification, setIntervalNotification] = useState(1);
 
   useEffect(() => {
     async function loadSettings() {
       const storage = await AsyncStorage.getItem('settings');
 
       const settingsSaved = JSON.parse(storage);
-      setIntervalNotification(
-        settingsSaved.intervalNotification && settingsSaved.intervalNotification
-      );
-      setShowNotification(
-        settingsSaved.showNotification && settingsSaved.showNotification
-      );
-      setDailyTargetLiters(
-        settingsSaved.dailytargetLiters && settingsSaved.dailytargetLiters
-      );
+      if (settingsSaved !== null) {
+        setIntervalNotification(settingsSaved.intervalNotification);
+        setShowNotification(settingsSaved.showNotification);
+        setDailyTargetLiters(settingsSaved.dailytargetLiters);
+      }
     }
     loadSettings();
   }, []);
@@ -57,7 +54,7 @@ export default function Settings() {
           <Input
             placeholder="Meta Diaria em Litros"
             keyboardType="numeric"
-            value={dailytargetLiters}
+            value={String(dailytargetLiters)}
             onChangeText={value => {
               setDailyTargetLiters(value);
             }}
@@ -74,7 +71,7 @@ export default function Settings() {
           <Input
             placeholder="Intervalo das Notificações em horas"
             keyboardType="numeric"
-            value={intervalNotification}
+            value={String(intervalNotification)}
             onChangeText={value => {
               setIntervalNotification(value);
             }}
