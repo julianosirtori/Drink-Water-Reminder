@@ -21,7 +21,7 @@ import {
   TextButtonDrinkWater,
 } from './styles';
 
-import AmountWeekly from './AmountWeekly';
+// import AmountWeekly from './AmountWeekly';
 
 function Home({ navigation, isFocused }) {
   const [dailytargetLiters, setDailyTargetLiters] = useState(0);

@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal 
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.1, 0.99.99]'
+    }
+}
+
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -128,7 +139,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.drinkwaterreminder"
+        applicationId "dev.julianosirtori.drinkwaterreminder"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -152,7 +163,11 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
+        releaseStaging{
+            buildConfigField "String", "CODEPUSH_KEY", '"7ahSci5pD3aX3cbFLSEcyQHT0UUrpRLSf72aE"'
+            matchingFallbacks = ['debug', 'release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -160,6 +175,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            buildConfigField "String", "CODEPUSH_KEY", '"vWJ8mvXZTfq9QsI8EjFu_1zs1M3-P0ONPHTVu"'
         }
     }
     // applicationVariants are e.g. debug, release
@@ -179,6 +195,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
+    implementation project(':react-native-code-push')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
