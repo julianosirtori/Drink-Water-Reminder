@@ -6,6 +6,8 @@ Aplicativo para registrar a quantidade de agua tomada durante do dia.
 
 O principal objetivo do aplicativo foi aprender como funciona o Realm no react native e a publicação na Google play usando code push e appcenter.
 
+Baixe ele na <a href="https://play.google.com/store/apps/details?id=dev.julianosirtori.drinkwaterreminder"> Google Play</a>
+
 ![Screenshot 1](screenshot.png)
 
 ### :rocket: Running Locally
