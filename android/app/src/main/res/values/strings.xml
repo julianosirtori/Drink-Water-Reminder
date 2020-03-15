@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Beba Água</string>
     <string name="CodePushDeploymentKey" moduleConfig="true" translatable="false">06579a34-7fcc-4d82-88fc-1f7b3cd7b0c2</string>
-
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+    <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
 </resources>
