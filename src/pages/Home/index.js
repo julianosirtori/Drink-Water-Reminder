@@ -83,7 +83,6 @@ function Home({ navigation, isFocused }) {
           <TextButtonDrinkWater>Beber Agua</TextButtonDrinkWater>
         </ButtonDrinkWater>
       </Container>
-      <AmountWeekly />
     </Background>
   );
 }
